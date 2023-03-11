@@ -43,10 +43,10 @@ def final_message(pairs):
     return output
 
 #########################################################
-def optimized(pairs):
+def optimized(pairs,classes):
     output = ""
         
-    output += f"Total: ${sum(pairs[0][1])} for {', '.join(pairs[0][0])}"
+    output += f"Total: ${sum(pairs[0][1])} \nAC order 1-{classes}: {', '.join(pairs[0][0])}"
     return output
 
   
