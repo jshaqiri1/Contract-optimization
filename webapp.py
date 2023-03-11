@@ -7,7 +7,7 @@ from funcAlloc import get_permutations, get_values, get_sorted_pairs, final_mess
 def app():
 
    
-    st.image("doe.png", width=400)
+
     st.title("Contract Value Optimization")
     st.caption('By CPA unit')
     
