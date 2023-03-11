@@ -15,7 +15,7 @@ def app():
     num_aggregate_classes = st.number_input("Enter the number of Aggregate Classes (AC's):", value=5, step=1)
 
     # Get the names of the contractors from the user
-    contractor_names = st.text_input("Enter the names of vendors separated by commas (e.g. Google, Apple, Miscrosoft):")
+    contractor_names = st.text_input("Enter the names of vendors that will receive awards separated by commas (e.g. Google, Apple, Miscrosoft):")
     contractor_names = [name.strip().upper() for name in contractor_names.split(',')]
 
     # Get the allocation list from the user
