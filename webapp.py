@@ -48,7 +48,7 @@ def app():
         values = get_values(my_permutations, bids)
         pairs = get_sorted_pairs(my_permutations, values)
         message = final_message(pairs)
-        best = optimized(pairs)
+        best = optimized(pairs,num_aggregate_classes)
         itnum = len(my_permutations)
       
 
