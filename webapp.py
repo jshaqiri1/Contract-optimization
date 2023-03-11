@@ -49,11 +49,13 @@ def app():
         pairs = get_sorted_pairs(my_permutations, values)
         message = final_message(pairs)
         best = optimized(pairs)
+        itnum = len(my_permutations)
+      
 
         
         st.markdown('**Optimized Contract Allocation:**')
         st.text(best)
-        st.markdown('**Below are all possible combinations sorted by $:**')
+        st.markdown(f'**Below are all {itnum} unique combinations sorted by $:**')
         st.text(message)
 
 
