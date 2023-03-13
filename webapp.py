@@ -18,7 +18,7 @@ def app():
     contractor_names = st.text_input("Enter the names of vendors that will receive awards separated by commas (e.g. Google, Apple, Miscrosoft):")
     contractor_names = [name.strip().upper() for name in contractor_names.split(',')]
    
-    st.markdown(f'Enter how you would like to split the {num_aggregate_classes} ACs:' )
+    st.subheader(f'Enter how you would like to split the {num_aggregate_classes} ACs:' )
 
     # Get the allocation list from the user
     allocation = []
