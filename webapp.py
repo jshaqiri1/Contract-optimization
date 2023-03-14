@@ -2,6 +2,18 @@ import streamlit as st
 from itertools import permutations
 from funcAlloc import get_raw_permutations, get_permutations, get_values, get_sorted_pairs, final_message, optimized
 
+def get_raw_permutations(companies):
+    for perm in permutations(companies):
+        yield perm
+        
+def get_permutations(raw_perms):
+    unique = []
+    for i in raw_perms:
+        if i in unique:
+            pass
+        else:
+            unique.append(i)
+    return unique
 
 # Define the Streamlit app
 def app():
