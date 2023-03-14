@@ -2,18 +2,18 @@ import streamlit as st
 from itertools import permutations
 from funcAlloc import get_values, get_sorted_pairs, final_message, optimized
 
-def get_raw_permutations(companies):
-    for perm in permutations(companies):
-        yield perm
+def get_unique_permutations(items):
+    if len(items) == 1:
+        yield items
+    else:
+        for perm in get_unique_permutations(items[1:]):
+            for i in range(len(perm) + 1):
+                new_perm = list(perm)
+                new_perm.insert(i, items[0])
+                yield tuple(new_perm)
         
-def get_permutations(raw_perms):
-    unique = []
-    for i in raw_perms:
-        if i in unique:
-            pass
-        else:
-            unique.append(i)
-    return unique
+def get_permutations(companies):
+    return list(get_unique_permutations(companies))
 
 # Define the Streamlit app
 def app():
@@ -58,8 +58,8 @@ def app():
 
     # Display the lowest combination of bids if the form has been submitted
     if submitted:
-        raw_permutations = get_raw_permutations(allocation)
-        my_permutations = get_permutations(raw_permutations)
+        
+        my_permutations = get_permutations(allocation)
         values = get_values(my_permutations, bids)
         pairs = get_sorted_pairs(my_permutations, values)
         message = final_message(pairs)
