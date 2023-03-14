@@ -1,12 +1,24 @@
 from itertools import permutations
 
-def get_permutations(companies):
+#def get_permutations(companies):
     
-    perms_memory = permutations(companies)
-    perms_agg = list(perms_memory)
-    perms = [*set(perms_agg)]
-    return perms
-
+    #perms_memory = permutations(companies)
+    #perms_agg = list(perms_memory)
+    #perms = [*set(perms_agg)]
+    #return perms
+    
+def get_raw_permutations(companies):
+    for perm in permutations(companies):
+        yield perm
+        
+def get_permutations(raw_perms):
+    unique = []
+    for i in raw_perms:
+        if i in unique:
+            pass
+        else:
+            unique.append(i)
+    return unique
 
 #########################################################
 
