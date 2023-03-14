@@ -8,8 +8,12 @@ from itertools import permutations
     #return perms
 
 def get_permutations(companies):
-    for perm in permutations(companies):
-        yield perm
+    combos = []
+    for r in range(1, len(companies) + 1):
+        for combo in combinations(companies, r):
+            combos.append(list(combo))
+    return combos
+
 #########################################################
 
 def get_values(permutations,bids):
