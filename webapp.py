@@ -1,6 +1,6 @@
 import streamlit as st
 from itertools import permutations
-from funcAlloc import get_permutations, get_values, get_sorted_pairs, final_message, optimized
+from funcAlloc import get_raw_permutations, get_permutations, get_values, get_sorted_pairs, final_message, optimized
 
 
 # Define the Streamlit app
@@ -46,7 +46,8 @@ def app():
 
     # Display the lowest combination of bids if the form has been submitted
     if submitted:
-        my_permutations = get_permutations(allocation)
+        raw_permutations = get_raw_permutations(allocation)
+        my_permutations = get_permutations(raw_permutations)
         values = get_values(my_permutations, bids)
         pairs = get_sorted_pairs(my_permutations, values)
         message = final_message(pairs)
