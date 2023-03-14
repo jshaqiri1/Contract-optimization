@@ -1,12 +1,15 @@
 from itertools import permutations
 
-def get_permutations(companies):
+#def get_permutations(companies):
     
-    perms_memory = permutations(companies)
-    perms_agg = list(perms_memory)
-    perms = [*set(perms_agg)]
-    return perms
+    #perms_memory = permutations(companies)
+    #perms_agg = list(perms_memory)
+    #perms = [*set(perms_agg)]
+    #return perms
 
+def get_permutations(companies):
+    for perm in permutations(companies):
+        yield perm
 #########################################################
 
 def get_values(permutations,bids):
