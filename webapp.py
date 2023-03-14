@@ -1,6 +1,6 @@
 import streamlit as st
 from itertools import permutations
-from funcAlloc import get_raw_permutations, get_permutations, get_values, get_sorted_pairs, final_message, optimized
+from funcAlloc import get_values, get_sorted_pairs, final_message, optimized
 
 def get_raw_permutations(companies):
     for perm in permutations(companies):
