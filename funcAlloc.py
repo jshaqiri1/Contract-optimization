@@ -1,18 +1,12 @@
 from itertools import permutations
 
-#def get_permutations(companies):
-    
-    #perms_memory = permutations(companies)
-    #perms_agg = list(perms_memory)
-    #perms = [*set(perms_agg)]
-    #return perms
-
 def get_permutations(companies):
-    combos = []
-    for r in range(1, len(companies) + 1):
-        for combo in combinations(companies, r):
-            combos.append(list(combo))
-    return combos
+    
+    perms_memory = permutations(companies)
+    perms_agg = list(perms_memory)
+    perms = [*set(perms_agg)]
+    return perms
+
 
 #########################################################
 
