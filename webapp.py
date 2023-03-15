@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 from itertools import permutations
 from funcAlloc import get_permutations, get_values, get_sorted_pairs, final_message, optimized
 
@@ -50,6 +51,11 @@ def app():
         message = final_message(pairs)
         best = optimized(pairs,num_aggregate_classes)
         itnum = len(my_permutations)
+         
+        # Add a download link for the results
+        results_df = pd.DataFrame({'Vendor': allocation, 'Aggregate Class': [f'Aggregate Class {i+1}' for i in range(num_aggregate_classes)], 'Bid Amount': [bids[i][vendor] for i in range(num_aggregate_classes) for vendor in contractor_names], 'Cost': [pair[1] for pair in pairs], 'Optimal Allocation': best})
+        st.markdown('**Download results as CSV:**')
+        st.download_button('Download', results_df.to_csv(index=False), file_name='contract_allocation_results.csv', mime='text/csv')
       
 
         
