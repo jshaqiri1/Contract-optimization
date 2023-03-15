@@ -5,14 +5,12 @@ from funcAlloc import get_permutations, get_values, get_sorted_pairs, final_mess
 
 # Define the Streamlit app
 def app():
-
    
-
     st.title("Contract Value Optimization")
     st.caption('Juxhin Shaqiri')
     
     # Get the number of aggregate classes from the user
-    num_aggregate_classes = st.number_input("Enter the number of Aggregate Classes (AC's):", value=5, step=1)
+    num_aggregate_classes = st.number_input("Enter the number of Aggregate Classes (AC's):", value=5, step=1, max_value=10)
 
     # Get the names of the contractors from the user
     contractor_names = st.text_input("Enter the names of vendors that will receive awards separated by commas (e.g. Google, Apple, Miscrosoft):")
