@@ -52,16 +52,15 @@ def app():
         best = optimized(pairs,num_aggregate_classes)
         itnum = len(my_permutations)
          
-
       # Add a download button to download the results as a CSV file
-      df = pd.DataFrame(columns=['Vendor', 'Aggregate Class', 'Bid Amount', 'Cost', 'Optimal Allocation'])
-      for i in range(num_aggregate_classes):
-          for j, vendor in enumerate(contractor_names):
-              df = df.append({'Vendor': vendor,
-                              'Aggregate Class': f'Aggregate Class {i+1}',
-                              'Bid Amount': bids[i][vendor],
-                              'Cost': pairs[i*num_aggregate_classes+j][1],
-                              'Optimal Allocation': best[j][i]}, ignore_index=True)
+     df = pd.DataFrame(columns=['Vendor', 'Aggregate Class', 'Bid Amount', 'Cost', 'Optimal Allocation'])
+     for i in range(num_aggregate_classes):
+         for j, vendor in enumerate(contractor_names):
+             df = df.append({'Vendor': vendor,
+                             'Aggregate Class': f'Aggregate Class {i+1}',
+                             'Bid Amount': bids[i][vendor],
+                             'Cost': pairs[i*num_aggregate_classes+j][1],
+                             'Optimal Allocation': best[j][i]}, ignore_index=True)
 
           
 
