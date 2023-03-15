@@ -53,8 +53,19 @@ def app():
         itnum = len(my_permutations)
          
 
-        # Add a download button to download the results as a CSV file
-        df = pd.DataFrame({'Vendor': allocation, 'Aggregate Class': [f'Aggregate Class {i+1}' for i in range(num_aggregate_classes)], 'Bid Amount': [bids[i][vendor] for i in range(num_aggregate_classes) for vendor in contractor_names], 'Cost': [pair[1] for pair in pairs], 'Optimal Allocation': best})
+      # Add a download button to download the results as a CSV file
+      df = pd.DataFrame(columns=['Vendor', 'Aggregate Class', 'Bid Amount', 'Cost', 'Optimal Allocation'])
+      for i in range(num_aggregate_classes):
+          for j, vendor in enumerate(contractor_names):
+              df = df.append({'Vendor': vendor,
+                              'Aggregate Class': f'Aggregate Class {i+1}',
+                              'Bid Amount': bids[i][vendor],
+                              'Cost': pairs[i*num_aggregate_classes+j][1],
+                              'Optimal Allocation': best[j][i]}, ignore_index=True)
+
+          
+
+        #df = pd.DataFrame({'Vendor': allocation, 'Aggregate Class': [f'Aggregate Class {i+1}' for i in range(num_aggregate_classes)], 'Bid Amount': [bids[i][vendor] for i in range(num_aggregate_classes) for vendor in contractor_names], 'Cost': [pair[1] for pair in pairs], 'Optimal Allocation': best})
         csv = df.to_csv(index=False)
         b64 = base64.b64encode(csv.encode()).decode()
         href = f'<a href="data:file/csv;base64,{b64}" download="results.csv">Download Results as CSV File</a>'
