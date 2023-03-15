@@ -52,11 +52,13 @@ def app():
         best = optimized(pairs,num_aggregate_classes)
         itnum = len(my_permutations)
          
-        # Add a download link for the results
-        results_df = pd.DataFrame({'Vendor': allocation, 'Aggregate Class': [f'Aggregate Class {i+1}' for i in range(num_aggregate_classes)], 'Bid Amount': [bids[i][vendor] for i in range(num_aggregate_classes) for vendor in contractor_names], 'Cost': [pair[1] for pair in pairs], 'Optimal Allocation': best})
-        st.markdown('**Download results as CSV:**')
-        st.download_button('Download', results_df.to_csv(index=False), file_name='contract_allocation_results.csv', mime='text/csv')
-      
+
+        # Add a download button to download the results as a CSV file
+        df = pd.DataFrame({'Vendor': allocation, 'Aggregate Class': [f'Aggregate Class {i+1}' for i in range(num_aggregate_classes)], 'Bid Amount': [bids[i][vendor] for i in range(num_aggregate_classes) for vendor in contractor_names], 'Cost': [pair[1] for pair in pairs], 'Optimal Allocation': best})
+        csv = df.to_csv(index=False)
+        b64 = base64.b64encode(csv.encode()).decode()
+        href = f'<a href="data:file/csv;base64,{b64}" download="results.csv">Download Results as CSV File</a>'
+        st.markdown(href, unsafe_allow_html=True)
 
         
         st.markdown('**Optimized Contract Allocation:**')
