@@ -11,7 +11,7 @@ def app():
     st.caption('Juxhin Shaqiri')
     
     # Get the number of aggregate classes from the user
-    num_aggregate_classes = st.number_input("Enter the number of Aggregate Classes (AC's) [max 10]:", value=5, step=1, max_value=10)
+    num_aggregate_classes = st.number_input("Enter the number of Aggregate Classes (AC's):", value=5, step=1, max_value=10)
 
     # Get the names of the contractors from the user
     contractor_names = st.text_input("Enter the names of vendors that will receive awards separated by commas (e.g. Google, Apple, Miscrosoft):")
@@ -35,7 +35,7 @@ def app():
         bids = []
         for i in range(num_aggregate_classes):
             bid_dict = {}
-            st.header(f"Aggregate Class {i+1}")
+            st.subheader(f"Aggregate Class {i+1}")
             for j, name in enumerate(contractor_names):
                 bid = st.number_input(f"{name}'s bid amount", value=0, step=1, key=f"bid_{i}_{j}")
                 bid_dict[name] = bid
