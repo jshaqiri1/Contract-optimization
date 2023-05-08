@@ -8,7 +8,7 @@ from funcAlloc import get_permutations, get_values, get_sorted_pairs, final_mess
 def app():
    
     st.title("Contract Value Optimization")
-    st.caption('Juxhin Shaqiri')
+    st.markdown('Developed by: Juxhin Shaqiri')
     
     # Get the number of aggregate classes from the user
     num_aggregate_classes = st.number_input("Enter the number of Aggregate Classes (AC's):", value=5, step=1, max_value=10)
